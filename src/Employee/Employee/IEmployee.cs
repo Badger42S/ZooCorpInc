@@ -8,7 +8,7 @@ namespace Employee
 {
     interface IEmployee
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        string FirstName { get; }
+        string LastName { get; }
     }
 }
