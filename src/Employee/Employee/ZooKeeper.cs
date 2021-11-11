@@ -21,12 +21,30 @@ namespace Employee
 
         public void AddAnimalExperience(Animal animal)
         {
-            AnimalExperience = nameof(animal) + " ";
+            var type = animal.GetType();
+            AnimalExperience = type.Name + ",";
+            Console.WriteLine($"{FirstName} {LastName} knows how to handle {type.Name}s now");
         }
 
         public bool HasAnimalExperience(string name)
         {
             return AnimalExperience.Contains(name);
+        }
+
+        public bool FeedAnimal(Animal animal)
+        {
+            var type = animal.GetType();
+            var typeName = type.Name;
+            bool feedAnimalResult = HasAnimalExperience(typeName);
+            if (feedAnimalResult)
+            {
+                Console.WriteLine($"{FirstName} {LastName} fed {typeName}");
+            }
+            else
+            {
+                Console.WriteLine($"{FirstName} {LastName} can't feed {typeName}");
+            }
+            return feedAnimalResult;
         }
     }
 }
