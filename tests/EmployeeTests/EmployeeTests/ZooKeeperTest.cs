@@ -1,6 +1,7 @@
 using System;
 using Xunit;
 using Employee;
+using Animals;
 
 namespace EmployeeTests
 {
@@ -12,7 +13,19 @@ namespace EmployeeTests
             string firstName = "Ivan";
             string lastName = "Korolev";
             ZooKeeper zooKeeper = new ZooKeeper(firstName, lastName);
-            zooKeeper.AddAnimalExperience(Animal animal);
+            Penguin penguin = new Penguin();
+            zooKeeper.AddAnimalExperience(penguin);
+            Assert.True(zooKeeper.HasAnimalExperience(typeof(Penguin).Name));
+        }
+        [Fact]
+        public void ShouldCreateZooKeeper()
+        {
+            string firstName = "Ivan";
+            string lastName = "Korolev";
+            ZooKeeper zooKeeper = new ZooKeeper(firstName, lastName);
+            Assert.Equal(firstName, zooKeeper.FirstName);
+            Assert.Equal(lastName, zooKeeper.LastName);
+            Assert.Equal(0,zooKeeper.AnimalExperience.Length);
         }
     }
 }

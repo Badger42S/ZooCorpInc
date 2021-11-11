@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Animals;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,14 +11,22 @@ namespace Employee
     {
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
-        public ZooKeeper(string firstName, string lastName)
+        public string AnimalExperience { get; private set; }
+        public ZooKeeper(string firstName, string lastName, string animalExperience ="")
         {
-
+            FirstName = firstName;
+            LastName = lastName;
+            AnimalExperience = animalExperience;
         }
 
         public void AddAnimalExperience(Animal animal)
         {
-            throw new NotImplementedException();
+            AnimalExperience = nameof(animal) + " ";
+        }
+
+        public bool HasAnimalExperience(string name)
+        {
+            return AnimalExperience.Contains(name);
         }
     }
 }

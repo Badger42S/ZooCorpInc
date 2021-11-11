@@ -12,8 +12,7 @@ namespace EmployeeTests
             string firstName = "Ivan";
             string lastName = "Korolev";
             Veterinarian veterinarian = new Veterinarian(firstName, lastName);
-            veterinarian.AddAnimalExperience(Animal animal);
+            //veterinarian.AddAnimalExperience(animal);
         }
     }
-}
 }
