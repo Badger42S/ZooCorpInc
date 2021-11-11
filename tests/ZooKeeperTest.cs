@@ -45,6 +45,8 @@ namespace EmployeeTests
             Penguin penguin = new Penguin();
             ZooKeeper zooKeeper = new ZooKeeper(firstName, lastName, animalExperience);
             Assert.True(zooKeeper.FeedAnimal(penguin));
+            Assert.Matches(firstName, penguin.FeedTimes[0].ZooKeeperFirstName);
+            Assert.Matches(lastName, penguin.FeedTimes[0].ZooKeeperLastName);
         }
     }
 }

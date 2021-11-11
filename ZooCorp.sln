@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeedTimeNotes", "src\FeedTi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Foods", "src\Foods\Foods.csproj", "{C18AA939-6E0E-4145-B6F4-7F12A22E1E45}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeTests", "tests\EmployeeTests.csproj", "{D01F7F3A-DDF0-4B47-AE75-E6C6B609581C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C18AA939-6E0E-4145-B6F4-7F12A22E1E45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C18AA939-6E0E-4145-B6F4-7F12A22E1E45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C18AA939-6E0E-4145-B6F4-7F12A22E1E45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D01F7F3A-DDF0-4B47-AE75-E6C6B609581C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D01F7F3A-DDF0-4B47-AE75-E6C6B609581C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D01F7F3A-DDF0-4B47-AE75-E6C6B609581C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D01F7F3A-DDF0-4B47-AE75-E6C6B609581C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
