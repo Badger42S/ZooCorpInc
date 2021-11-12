@@ -9,14 +9,7 @@ namespace Animals
     public class Penguin : Bird
     {
         public Penguin(int id) : base(id) { }
-        public void AddSchedule(List<int> moreFeedTimes)
-        {
-            FeedSchedule.AddRange(moreFeedTimes);
-            FeedSchedule.Sort();
-        }
         public override string[] FavoriteFood { get; } = new string[] {"salmon", "herring" };
-
-
         public override bool IsFriendlyWithAnimal(Animal animal)
         {
             string notCompatibility = "snake, lion";

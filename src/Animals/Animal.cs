@@ -23,7 +23,12 @@ namespace Animals
             ID = id;
         }
         public abstract bool IsFriendlyWithAnimal(Animal animal);
-        
+
+        public void AddSchedule(List<int> moreFeedTimes)
+        {
+            FeedSchedule = moreFeedTimes;
+            FeedSchedule.Sort();
+        }
 
         public void Feed(Food food)
         {
