@@ -80,9 +80,16 @@ namespace AnimalsTests
        [InlineData("egg")]
        public void ShouldNotGetBadFood(string badFood)
        {
-           Parrot parrot = new Parrot(7);
-           string favoriteFoodString = string.Join(",", parrot.FavoriteFood);
+           var lion = new Lion(7);
+           string favoriteFoodString = string.Join(",", lion.FavoriteFood);
            Assert.DoesNotContain(badFood, favoriteFoodString);
        }
-   }
+        [Theory]
+        [InlineData(1000)]
+        public void ShouldBeRequireSsquareFeet(int requiresFt)
+        {
+            var lion = new Lion(7);
+            Assert.Equal(requiresFt, lion.RequiredSpaceSqFt);
+        }
+    }
 }

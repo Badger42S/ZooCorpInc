@@ -14,9 +14,9 @@ namespace Animals
 
         public override bool IsFriendlyWithAnimal(Animal animal)
         {
-            string notCompatibility = "snake, lion";
-            string animalType = animal.GetType().Name.ToLower();
-            return !notCompatibility.Contains(animalType);
+            string FriendlyAnimalList = "Penguin";
+            string animalType = animal.GetType().Name;
+            return FriendlyAnimalList.Contains(animalType);
         }
 
     }
