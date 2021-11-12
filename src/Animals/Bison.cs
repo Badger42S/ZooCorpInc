@@ -13,7 +13,7 @@ namespace Animals
         public Bison(int id) : base(id) { }
         public override bool IsFriendlyWithAnimal(Animal animal)
         {
-            string FriendlyAnimalList = "Elephant";
+            string FriendlyAnimalList = "Elephant, Bison";
             string animalType = animal.GetType().Name;
             return FriendlyAnimalList.Contains(animalType);
         }
