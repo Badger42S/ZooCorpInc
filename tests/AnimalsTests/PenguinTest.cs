@@ -46,13 +46,26 @@ namespace AnimalsTests
         [Fact]
         public void ShouldBeFriendly()
         {
-            Penguin penguin = new Penguin(7);
-            Snake snake = new(6);
-            Penguin penguin2 = new Penguin(8);
-            Assert.False(penguin.IsFriendlyWithAnimal(snake));
+            var penguin = new Penguin(7);
+            var penguin2 = new Penguin(9);
             Assert.True(penguin.IsFriendlyWithAnimal(penguin2));
-            Turtle turtle = new Turtle(52);
-            Assert.True(penguin.IsFriendlyWithAnimal(turtle));
+        }
+        [Fact]
+        public void ShouldNotBeFriendly()
+        {
+            var penguin = new Penguin(1);
+            var snake = new Snake(2);
+            var parrot = new Parrot(3);
+            var bison = new Bison(4);
+            var elephant = new Elephant(5);
+            var turtle = new Turtle(6);
+            var lion = new Lion(7);
+            Assert.False(penguin.IsFriendlyWithAnimal(snake));
+            Assert.False(penguin.IsFriendlyWithAnimal(parrot));
+            Assert.False(penguin.IsFriendlyWithAnimal(bison));
+            Assert.False(penguin.IsFriendlyWithAnimal(elephant));
+            Assert.False(penguin.IsFriendlyWithAnimal(turtle));
+            Assert.False(penguin.IsFriendlyWithAnimal(lion));
         }
         [Theory]
         [InlineData("salmon")]
