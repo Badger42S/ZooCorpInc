@@ -10,7 +10,7 @@ namespace Animals
     {
         public override string[] FavoriteFood { get; } = new string[] { "fruit", "vegetables" };
         public override int RequiredSpaceSqFt { get; } = 5;
-        public Parrot(int id) : base(id) { }
+       // public Parrot(int id) : base(id) { }
         public override bool IsFriendlyWithAnimal(Animal animal)
         {
             string FriendlyAnimalList = "Parrot, Bison, Elephant, Turtle";
