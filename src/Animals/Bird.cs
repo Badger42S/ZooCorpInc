@@ -8,6 +8,6 @@ namespace Animals
 {
     public abstract class Bird:Animal
     {      
-        public Bird(int id) : base(id) { }
+       // public Bird(int id) : base(id) { }
     }
 }

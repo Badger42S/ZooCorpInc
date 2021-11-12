@@ -11,15 +11,15 @@ namespace AnimalsTests
         [Fact]
         public void ShouldBeHealed()
         {
-            var elephant = new Elephant(7);
+            var elephant = new Elephant();
             Antibiotics antibiotics = new();
             elephant.Heal(antibiotics);
             Assert.False(elephant.IsSick);
-            elephant = new Elephant(7);
+            elephant = new Elephant();
             AntiDepression antiDepression = new();
             elephant.Heal(antiDepression);
             Assert.False(elephant.IsSick);
-            elephant = new Elephant(7);
+            elephant = new Elephant();
             AntiInflammatory antiInflammatory = new();
             elephant.Heal(antiInflammatory);
             Assert.False(elephant.IsSick);
@@ -29,7 +29,7 @@ namespace AnimalsTests
         [InlineData(5, 20)]
         public void ShouldAddSchedule(int value1, int value2)
         {
-            var elephant = new Elephant(77);
+            var elephant = new Elephant();
             List<int> moreFeedTimes = new() { value1, value2 };
             elephant.AddSchedule(moreFeedTimes);
             Assert.Equal(value1, elephant.FeedSchedule[0]);
@@ -40,16 +40,17 @@ namespace AnimalsTests
         [InlineData(6698705)]
         public void ShouldBeCorrectID(int value)
         {
-            var elephant = new Elephant(value);
+            var elephant = new Elephant();
+            elephant.ID = value;
             Assert.Equal(value, elephant.ID);
         }
         [Fact]
         public void ShouldBeFriendly()
         {
-            var elephant = new Elephant(7);
-            var bison = new Bison(6);
-            var parrot = new Parrot(5);
-            var turtle = new Turtle(6);
+            var elephant = new Elephant();
+            var bison = new Bison();
+            var parrot = new Parrot();
+            var turtle = new Turtle();
             Assert.True(elephant.IsFriendlyWithAnimal(parrot));
             Assert.True(elephant.IsFriendlyWithAnimal(bison));
             Assert.True(elephant.IsFriendlyWithAnimal(turtle));
@@ -57,11 +58,11 @@ namespace AnimalsTests
         [Fact]
         public void ShouldNotBeFriendly()
         {
-            var elephant = new Elephant(8);
-            var elephant2 = new Elephant(8);
-            var lion = new Lion(1);
-            var snake = new Snake(2);
-            var penguin = new Penguin(7);
+            var elephant = new Elephant();
+            var elephant2 = new Elephant();
+            var lion = new Lion();
+            var snake = new Snake();
+            var penguin = new Penguin();
             Assert.False(elephant.IsFriendlyWithAnimal(lion));
             Assert.False(elephant.IsFriendlyWithAnimal(snake));
             Assert.False(elephant.IsFriendlyWithAnimal(elephant2));
@@ -73,7 +74,7 @@ namespace AnimalsTests
         [InlineData("fruit")]
         public void ShouldGetFavoriteFood(string food)
         {
-            var elephant = new Elephant(7);
+            var elephant = new Elephant();
             string favoriteFoodString = string.Join(",", elephant.FavoriteFood);
             Assert.Contains(food, favoriteFoodString);
         }
@@ -82,7 +83,7 @@ namespace AnimalsTests
         [InlineData("egg")]
         public void ShouldNotGetBadFood(string badFood)
         {
-            var elephant = new Elephant(7);
+            var elephant = new Elephant();
             string favoriteFoodString = string.Join(",", elephant.FavoriteFood);
             Assert.DoesNotContain(badFood, favoriteFoodString);
         }
@@ -90,7 +91,7 @@ namespace AnimalsTests
         [InlineData(1000)]
         public void ShouldBeRequireSsquareFeet(int requiresFt)
         {
-            var elephant = new Elephant(7);
+            var elephant = new Elephant();
             Assert.Equal(requiresFt, elephant.RequiredSpaceSqFt);
         }
     }

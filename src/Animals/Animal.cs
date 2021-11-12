@@ -13,16 +13,16 @@ namespace Animals
         public bool IsSick { get; private set; } = true;
         public List<int> FeedSchedule { get; private set; } = new() { 12 };
         public List<FeedTime> FeedTimes { get; set; } = new();
-        public int ID { get; }
+        public int ID { get; set; }
         
 
         public void Heal(Medicine medicine)
         {
             IsSick = false;
         }
-        public Animal(int id)
+        public Animal()
         {
-            ID = id;
+           
         }
         public abstract bool IsFriendlyWithAnimal(Animal animal);
 

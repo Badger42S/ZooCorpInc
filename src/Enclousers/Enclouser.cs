@@ -2,6 +2,7 @@
 using Exceptions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Zoos;
 
 namespace Enclousers
@@ -31,6 +32,13 @@ namespace Enclousers
                     throw new NotFriendlyAnimalException();
                 }
             }
+            var random = new Random();
+            int randomId = random.Next(0, int.MaxValue);
+            while (Animals.Any(note => note.ID == randomId))
+            {
+                randomId = random.Next(0, int.MaxValue);
+            }
+            animal.ID = randomId;
             Animals.Add(animal);
             SqureFeet -= animal.RequiredSpaceSqFt;
         }

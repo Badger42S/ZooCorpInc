@@ -23,20 +23,37 @@ namespace EnclouserTests
         {
             var zoo = new Zoo("Toronto");
             var enclouser = new Enclouser("savannah", zoo, 2000);
-            var lion = new Lion(7);
-            var lion2 = new Lion(6);
+            var lion = new Lion();
+            var lion2 = new Lion();
             enclouser.AddAnimals(lion);
             enclouser.AddAnimals(lion2);
             Assert.Equal(lion, enclouser.Animals[0]);
             Assert.Equal(lion2, enclouser.Animals[1]);
         }
         [Fact]
+        public void ShouldAddAnimalsWithUniqueID()
+        {
+            var zoo = new Zoo("Toronto");
+            var enclouser = new Enclouser("savannah", zoo, 50000);
+            var turtle = new Turtle();
+            var parrot = new Parrot();
+            var bison = new Bison();
+            var elephant = new Elephant();
+            enclouser.AddAnimals(turtle);
+            enclouser.AddAnimals(parrot); 
+            enclouser.AddAnimals(bison);
+            enclouser.AddAnimals(elephant);
+            Assert.NotEqual(turtle.ID, parrot.ID);
+            Assert.NotEqual(elephant.ID, bison.ID);
+            Assert.NotEqual(turtle.ID, bison.ID);
+        }
+        [Fact]
         public void ShouldNotAddAnimalToCloseSpace()
         {
             var zoo = new Zoo("Toronto");
             var enclouser = new Enclouser("savannah", zoo, 1000);
-            var lion = new Lion(7);
-            var lion2 = new Lion(6);
+            var lion = new Lion();
+            var lion2 = new Lion();
             enclouser.AddAnimals(lion);
             Assert.Throws<NoAvalibaleSpaceException>(()=>enclouser.AddAnimals(lion2));
         }
@@ -45,21 +62,21 @@ namespace EnclouserTests
         {
             var zoo = new Zoo("Toronto");
             var enclouser = new Enclouser("savannah", zoo, 5000);
-            var lion = new Lion(7);
-            var parrot = new Parrot(6);
+            var lion = new Lion();
+            var parrot = new Parrot();
             enclouser.AddAnimals(lion);
             Assert.Throws<NotFriendlyAnimalException>(() => enclouser.AddAnimals(parrot));
         }
         [Fact]
-        public void ShouldAddFrindlyAnimals()
+        public void ShouldAddFriendlyAnimals()
         {
             var zoo = new Zoo("Toronto");
             var enclouser = new Enclouser("savannah", zoo, 50000);
-            var turtle = new Turtle(1);
-            var turtle2 = new Turtle(2);
-            var parrot = new Parrot(3);
-            var bison = new Bison(4);
-            var elephant = new Elephant(5);
+            var turtle = new Turtle();
+            var turtle2 = new Turtle();
+            var parrot = new Parrot();
+            var bison = new Bison();
+            var elephant = new Elephant();
             enclouser.AddAnimals(turtle);
             enclouser.AddAnimals(turtle2);
             enclouser.AddAnimals(parrot);
