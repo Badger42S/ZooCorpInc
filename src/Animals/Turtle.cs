@@ -10,11 +10,12 @@ namespace Animals
     {
         public Turtle(int id) : base(id) { }
         public override string[] FavoriteFood { get; } = new string[] { "grass", "vegetable" };
+        public override int RequiredSpaceSqFt { get; } = 5;
         public override bool IsFriendlyWithAnimal(Animal animal)
         {
-            string notCompatibility = "lion, bison, snake";
-            string animalType = animal.GetType().Name.ToLower();
-            return !notCompatibility.Contains(animalType);
+            string FriendlyAnimalList = "Parrot, Bison, Elephant, Turtle";
+            string animalType = animal.GetType().Name;
+            return FriendlyAnimalList.Contains(animalType);
         }
     }
 }
