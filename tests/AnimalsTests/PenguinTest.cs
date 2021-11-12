@@ -81,9 +81,16 @@ namespace AnimalsTests
         [InlineData("egg")]
         public void ShouldNotGetBadFood(string badFood)
         {
-            Penguin penguin = new Penguin(7);
+            var penguin = new Penguin(7);
             string favoriteFoodString = string.Join(",", penguin.FavoriteFood);
             Assert.DoesNotContain(badFood, favoriteFoodString);
+        }
+        [Theory]
+        [InlineData(10)]
+        public void ShouldBeRequireSsquareFeet(int requiresFt)
+        {
+            var penguin = new Penguin(7);
+            Assert.Equal(requiresFt, penguin.RequiredSpaceSqFt);
         }
     }
 }

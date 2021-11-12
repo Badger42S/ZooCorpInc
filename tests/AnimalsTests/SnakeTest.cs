@@ -85,5 +85,12 @@ namespace AnimalsTests
             string favoriteFoodString = string.Join(",", snake.FavoriteFood);
            Assert.DoesNotContain(badFood, favoriteFoodString);
        }
-   }
+        [Theory]
+        [InlineData(2)]
+        public void ShouldBeRequireSsquareFeet(int requiresFt)
+        {
+            var snake = new Snake(7);
+            Assert.Equal(requiresFt, snake.RequiredSpaceSqFt);
+        }
+    }
 }
