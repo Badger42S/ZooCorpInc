@@ -13,7 +13,7 @@ namespace EmployeeTests
             string firstName = "Lev";
             string lastName = "Starov";
             Veterinarian veterinarian = new Veterinarian(firstName, lastName);
-            Penguin penguin = new Penguin();
+            Penguin penguin = new Penguin(8);
             veterinarian.AddAnimalExperience(penguin);
             Assert.Contains(typeof(Penguin).Name, veterinarian.AnimalExperience);
         }
@@ -43,9 +43,9 @@ namespace EmployeeTests
             string lastName = "Starov"; 
             string animalExperience = typeof(Penguin).Name;
             Veterinarian veterinarian = new Veterinarian(firstName, lastName, animalExperience);
-            Penguin penguin = new Penguin();
+            Penguin penguin = new Penguin(8);
             Assert.False(veterinarian.HealAnimal(penguin));
-            Snake snake = new Snake();
+            Snake snake = new Snake(9);
             Assert.True(veterinarian.HealAnimal(snake));
         }
 

@@ -64,7 +64,7 @@ namespace AnimalsTests
             Assert.Contains(food, favoriteFoodString);
         }
         [Theory]
-        [InlineData("meat")]
+        [InlineData("grass")]
         [InlineData("egg")]
         public void ShouldNotGetBadFood(string badFood)
         {

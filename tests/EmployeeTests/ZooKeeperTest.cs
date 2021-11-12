@@ -13,7 +13,7 @@ namespace EmployeeTests
             string firstName = "Ivan";
             string lastName = "Korolev";
             ZooKeeper zooKeeper = new ZooKeeper(firstName, lastName);
-            Penguin penguin = new Penguin();
+            Penguin penguin = new Penguin(8);
             zooKeeper.AddAnimalExperience(penguin);
             Assert.Contains(typeof(Penguin).Name, zooKeeper.AnimalExperience);
         }
@@ -42,7 +42,7 @@ namespace EmployeeTests
             string firstName = "Ivan";
             string lastName = "Korolev";
             string animalExperience = typeof(Penguin).Name;
-            Penguin penguin = new Penguin();
+            Penguin penguin = new Penguin(9);
             ZooKeeper zooKeeper = new ZooKeeper(firstName, lastName, animalExperience);
             Assert.True(zooKeeper.FeedAnimal(penguin));
             Assert.Matches(firstName, penguin.FeedTimes[0].ZooKeeperFirstName);
