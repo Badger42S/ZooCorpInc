@@ -3,6 +3,7 @@ using Enclousers;
 using Exceptions;
 using System;
 using System.Collections.Generic;
+using Employee;
 
 namespace Zoos
 {
@@ -10,7 +11,9 @@ namespace Zoos
     {
         public string Location { get; private set; }
         public List<Enclouser> Enclouseres { get; private set; } = new() { };
-        
+        public List<IEmployee> Employees { get; private set; } = new() { };
+
+
         public Zoo(string location)
         {
             Location = location;
@@ -43,6 +46,11 @@ namespace Zoos
             }
 
             return availableEnclouser;                
+        }
+
+        public void HireEmployee(IEmployee employee)
+        {
+            Employees.Add(employee);
         }
     }
 }

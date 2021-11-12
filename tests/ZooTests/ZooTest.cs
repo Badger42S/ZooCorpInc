@@ -1,4 +1,5 @@
 using Animals;
+using Employee;
 using Enclousers;
 using Exceptions;
 using System;
@@ -55,6 +56,56 @@ namespace ZooTests
             var penguin = new Penguin();
             zoo.FindAvailableEnclouser(penguin);
             Assert.Throws<NoAvailableEnclouserException>(() => zoo.FindAvailableEnclouser(bison));
+        }
+        [Fact]
+        public void ShouldBeHireZooKeeper()
+        {
+            var zoo = new Zoo("Berlin");
+            zoo.AddEnclouser("ice desert", 5000);
+            zoo.AddEnclouser("forest", 5000);
+            var bison = new Bison();
+            var penguin = new Penguin();
+            zoo.FindAvailableEnclouser(penguin);
+            zoo.FindAvailableEnclouser(bison);
+            var zooKeeper = new ZooKeeper("Karl", "Gustaf", "Penguin");
+            zoo.HireEmployee(zooKeeper);
+            var hiredKeeper = zoo.Employees.Find(emp =>
+            {
+                return (emp.FirstName == zooKeeper.FirstName) && (emp.LastName == zooKeeper.LastName);
+            });
+            Assert.Equal(zooKeeper, hiredKeeper);
+        }
+        [Fact]
+        public void ShouldBeHireVeterinarian()
+        {
+            var zoo = new Zoo("Berlin");
+            zoo.AddEnclouser("ice desert", 5000);
+            zoo.AddEnclouser("forest", 5000);
+            var bison = new Bison();
+            var penguin = new Penguin();
+            zoo.FindAvailableEnclouser(penguin);
+            zoo.FindAvailableEnclouser(bison);
+            var veterinarian = new Veterinarian("Karl", "Gustaf", "Bison");
+            zoo.HireEmployee(veterinarian);
+            var hiredKeeper = zoo.Employees.Find(emp =>
+            {
+                return (emp.FirstName == veterinarian.FirstName) && (emp.LastName == veterinarian.LastName);
+            });
+            Assert.Equal(veterinarian, hiredKeeper);
+        }
+        [Fact]
+        public void ShouldNotBeHireVeterinarian()
+        {
+            var zoo = new Zoo("Berlin");
+            zoo.AddEnclouser("ice desert", 5000);
+            zoo.AddEnclouser("forest", 5000);
+            var bison = new Bison();
+            var penguin = new Penguin();
+            zoo.FindAvailableEnclouser(penguin);
+            zoo.FindAvailableEnclouser(bison);
+            var veterinarian = new Veterinarian("Karl", "Gustaf", "Bison");
+            zoo.HireEmployee(veterinarian);
+            Assert.Empty(zoo.Employees);
         }
     }
 }

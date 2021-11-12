@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Employee
 {
-    interface IEmployee
+    public interface IEmployee
     {
         string FirstName { get; }
         string LastName { get; }
