@@ -13,16 +13,16 @@ namespace EnclouserTests
         public void ShouldBeCreateEnclouser()
         {
             var zoo = new Zoo("Toronto");
-            var enclouser = new Enclouser("savannah", zoo, 1000);
+            var enclouser = new Enclouser("savannah", zoo.Location, 1000);
             Assert.Equal("savannah", enclouser.Name);
-            Assert.Equal(zoo, enclouser.ParentZoo);
+            Assert.Equal("Toronto", enclouser.ParentZoo);
             Assert.Equal(1000, enclouser.SqureFeet);
         }
         [Fact]
         public void ShouldAddAnimalsOnFreeSpace()
         {
             var zoo = new Zoo("Toronto");
-            var enclouser = new Enclouser("savannah", zoo, 2000);
+            var enclouser = new Enclouser("savannah", zoo.Location, 2000);
             var lion = new Lion();
             var lion2 = new Lion();
             enclouser.AddAnimals(lion);
@@ -34,7 +34,7 @@ namespace EnclouserTests
         public void ShouldAddAnimalsWithUniqueID()
         {
             var zoo = new Zoo("Toronto");
-            var enclouser = new Enclouser("savannah", zoo, 50000);
+            var enclouser = new Enclouser("savannah", zoo.Location, 50000);
             var turtle = new Turtle();
             var parrot = new Parrot();
             var bison = new Bison();
@@ -51,7 +51,7 @@ namespace EnclouserTests
         public void ShouldNotAddAnimalToCloseSpace()
         {
             var zoo = new Zoo("Toronto");
-            var enclouser = new Enclouser("savannah", zoo, 1000);
+            var enclouser = new Enclouser("savannah", zoo.Location, 1000);
             var lion = new Lion();
             var lion2 = new Lion();
             enclouser.AddAnimals(lion);
@@ -61,7 +61,7 @@ namespace EnclouserTests
         public void ShouldNotAddNotFriendlyAnimal()
         {
             var zoo = new Zoo("Toronto");
-            var enclouser = new Enclouser("savannah", zoo, 5000);
+            var enclouser = new Enclouser("savannah", zoo.Location, 5000);
             var lion = new Lion();
             var parrot = new Parrot();
             enclouser.AddAnimals(lion);
@@ -71,7 +71,7 @@ namespace EnclouserTests
         public void ShouldAddFriendlyAnimals()
         {
             var zoo = new Zoo("Toronto");
-            var enclouser = new Enclouser("savannah", zoo, 50000);
+            var enclouser = new Enclouser("savannah", zoo.Location, 50000);
             var turtle = new Turtle();
             var turtle2 = new Turtle();
             var parrot = new Parrot();

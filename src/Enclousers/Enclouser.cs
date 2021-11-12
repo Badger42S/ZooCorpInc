@@ -3,7 +3,6 @@ using Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Zoos;
 
 namespace Enclousers
 {
@@ -11,12 +10,12 @@ namespace Enclousers
     {
         public string Name { get; private set; }
         public List<Animal> Animals { get; private set; } = new() { };
-        public Zoo ParentZoo { get; private set; }
+        public string ParentZoo { get; private set; }
         public int SqureFeet { get; private set; }
-        public Enclouser(string name, Zoo zoo, int squreFeet) 
+        public Enclouser(string name, string parentZoo, int squreFeet) 
         {
             Name = name;
-            ParentZoo = zoo;
+            ParentZoo = parentZoo;
             SqureFeet = squreFeet;
         }
         public void AddAnimals(Animal animal) 

@@ -17,13 +17,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeTests", "tests\Empl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalsTests", "tests\AnimalsTests\AnimalsTests.csproj", "{297D86CD-2BF2-4073-8BA4-180809D62581}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnclouserTests", "tests\EnclouserTests\EnclouserTests.csproj", "{67F0CA62-541B-4F89-918D-281AF624136B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnclouserTests", "tests\EnclouserTests\EnclouserTests.csproj", "{67F0CA62-541B-4F89-918D-281AF624136B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enclousers", "src\Enclousers\Enclousers.csproj", "{F50F0A48-643A-48B2-A5F3-A495A2C6ADA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enclousers", "src\Enclousers\Enclousers.csproj", "{F50F0A48-643A-48B2-A5F3-A495A2C6ADA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zoos", "src\Zoos\Zoos.csproj", "{D5EE4672-F9B8-4F84-BFCB-038D39CAD815}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zoos", "src\Zoos\Zoos.csproj", "{D5EE4672-F9B8-4F84-BFCB-038D39CAD815}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions", "src\Exceptions\Exceptions.csproj", "{87F60AC0-A994-4FC4-A744-8884CC7F19E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exceptions", "src\Exceptions\Exceptions.csproj", "{87F60AC0-A994-4FC4-A744-8884CC7F19E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZooTests", "tests\ZooTests\ZooTests.csproj", "{A3053EA1-267F-4A81-9D97-BE89C676351A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{87F60AC0-A994-4FC4-A744-8884CC7F19E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87F60AC0-A994-4FC4-A744-8884CC7F19E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87F60AC0-A994-4FC4-A744-8884CC7F19E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3053EA1-267F-4A81-9D97-BE89C676351A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3053EA1-267F-4A81-9D97-BE89C676351A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3053EA1-267F-4A81-9D97-BE89C676351A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3053EA1-267F-4A81-9D97-BE89C676351A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
