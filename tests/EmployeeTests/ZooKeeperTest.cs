@@ -42,11 +42,9 @@ namespace EmployeeTests
             string firstName = "Ivan";
             string lastName = "Korolev";
             string animalExperience = typeof(Penguin).Name;
-            Penguin penguin = new Penguin(9);
             ZooKeeper zooKeeper = new ZooKeeper(firstName, lastName, animalExperience);
+            Penguin penguin = new Penguin(9);
             Assert.True(zooKeeper.FeedAnimal(penguin));
-            Assert.Matches(firstName, penguin.FeedTimes[0].ZooKeeperFirstName);
-            Assert.Matches(lastName, penguin.FeedTimes[0].ZooKeeperLastName);
         }
     }
 }
