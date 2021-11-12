@@ -1,4 +1,5 @@
 ﻿using Animals;
+using Exceptions;
 using System;
 using System.Collections.Generic;
 using Zoos;
@@ -19,7 +20,19 @@ namespace Enclousers
         }
         public void AddAnimals(Animal animal) 
         {
+            if(SqureFeet - animal.RequiredSpaceSqFt < 0)
+            {
+                throw new NoAvalibaleSpaceException();
+            }
+            foreach(var heldAnimal in Animals)
+            {
+                if (!heldAnimal.IsFriendlyWithAnimal(animal))
+                {
+                    throw new NotFriendlyAnimalException();
+                }
+            }
             Animals.Add(animal);
+            SqureFeet -= animal.RequiredSpaceSqFt;
         }
     }
 }

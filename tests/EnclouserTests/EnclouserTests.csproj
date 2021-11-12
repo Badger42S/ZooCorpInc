@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Animals\Animals.csproj" />
     <ProjectReference Include="..\..\src\Enclousers\Enclousers.csproj" />
+    <ProjectReference Include="..\..\src\Exceptions\Exceptions.csproj" />
     <ProjectReference Include="..\..\src\Zoos\Zoos.csproj" />
   </ItemGroup>
 
