@@ -103,9 +103,21 @@ namespace ZooTests
             var penguin = new Penguin();
             zoo.FindAvailableEnclouser(penguin);
             zoo.FindAvailableEnclouser(bison);
-            var veterinarian = new Veterinarian("Karl", "Gustaf", "Bison");
-            zoo.HireEmployee(veterinarian);
-            Assert.Empty(zoo.Employees);
+            var veterinarian = new Veterinarian("Karl", "Gustaf", "Lion");
+            Assert.Throws<NoNeededExperienceException>(() => zoo.HireEmployee(veterinarian));
+        }
+        [Fact]
+        public void ShouldNotBeHireZooKeeper()
+        {
+            var zoo = new Zoo("Berlin");
+            zoo.AddEnclouser("ice desert", 5000);
+            zoo.AddEnclouser("forest", 5000);
+            var bison = new Bison();
+            var penguin = new Penguin();
+            zoo.FindAvailableEnclouser(penguin);
+            zoo.FindAvailableEnclouser(bison);
+            var zooKeeper = new ZooKeeper("Karl", "Gustaf", "Lion");
+            Assert.Throws<NoNeededExperienceException>(() => zoo.HireEmployee(zooKeeper));
         }
     }
 }

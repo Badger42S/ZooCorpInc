@@ -4,6 +4,7 @@ using Exceptions;
 using System;
 using System.Collections.Generic;
 using Employee;
+using Validators;
 
 namespace Zoos
 {
@@ -12,11 +13,13 @@ namespace Zoos
         public string Location { get; private set; }
         public List<Enclouser> Enclouseres { get; private set; } = new() { };
         public List<IEmployee> Employees { get; private set; } = new() { };
-
+        public HashSet<string> AnimalsType { get; private set; } = new () { };
+        private HireValidatorProvider ValidatorProvider { get; set; }
 
         public Zoo(string location)
         {
             Location = location;
+            ValidatorProvider = new HireValidatorProvider();
         }
 
         public void AddEnclouser(string name, int squareFeet)
@@ -34,6 +37,7 @@ namespace Zoos
                 try
                 {
                     enclousere.AddAnimals(animal);
+                    AnimalsType.Add(animal.GetType().Name);
                     availableEnclouser = enclousere;
                     break;
                 }
@@ -50,6 +54,9 @@ namespace Zoos
 
         public void HireEmployee(IEmployee employee)
         {
+            var validator = ValidatorProvider.GetHireValidator(employee, AnimalsType);
+            var errorsList = validator.ValidateEmployee(employee);
+
             Employees.Add(employee);
         }
     }
