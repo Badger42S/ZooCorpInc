@@ -56,7 +56,10 @@ namespace Zoos
         {
             var validator = ValidatorProvider.GetHireValidator(employee, AnimalsType);
             var errorsList = validator.ValidateEmployee(employee);
-
+            if (errorsList.Count != 0)
+            {
+                throw new NoNeededExperienceException();
+            }
             Employees.Add(employee);
         }
     }

@@ -27,7 +27,6 @@ namespace Validators
             if(experienceIntersect.Count() == 0)
             {
                 errorList.Add("No needed experience");
-                throw new NoNeededExperienceException();
             }
             return errorList;
         }
