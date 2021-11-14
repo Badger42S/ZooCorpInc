@@ -158,14 +158,16 @@ namespace ZooTests
             var penguin3 = new Penguin();
             var penguin4 = new Penguin();
             var bison = new Bison();
+            var bison2 = new Bison();
             zoo.FindAvailableEnclouser(penguin);
             zoo.FindAvailableEnclouser(penguin2);
             zoo.FindAvailableEnclouser(penguin3);
             zoo.FindAvailableEnclouser(penguin4);
             zoo.FindAvailableEnclouser(bison);
+            zoo.FindAvailableEnclouser(bison2);
             var zooKeeper = new ZooKeeper("Karl", "Gustaf", "Penguin, Bison");
             var zooKeeper2 = new ZooKeeper("Janek", "Tobrov", "Penguin");
-            var zooKeeper3 = new ZooKeeper("Janek", "Tobrov", "Bison");
+            var zooKeeper3 = new ZooKeeper("Cindy", "Crawford", "Bison");
             zoo.HireEmployee(zooKeeper);
             zoo.HireEmployee(zooKeeper2);
             zoo.HireEmployee(zooKeeper3);
@@ -175,12 +177,14 @@ namespace ZooTests
             penguin3.AddSchedule(new() { todayDate.AddHours(-1).Hour, todayDate.AddHours(2).Hour });
             penguin4.AddSchedule(new() { todayDate.AddHours(-1).Hour, todayDate.AddHours(2).Hour });
             bison.AddSchedule(new() { todayDate.AddHours(-1).Hour, todayDate.AddHours(2).Hour });
+            bison2.AddSchedule(new() { todayDate.AddHours(-1).Hour, todayDate.AddHours(2).Hour });
             zoo.FeedAnimals(todayDate);
             Assert.Equal(zooKeeper.LastName, penguin.FeedTimes[0].ZooKeeperLastName);
             Assert.Equal(zooKeeper2.LastName, penguin2.FeedTimes[0].ZooKeeperLastName);
             Assert.Equal(zooKeeper.LastName, penguin3.FeedTimes[0].ZooKeeperLastName);
             Assert.Equal(zooKeeper2.LastName, penguin4.FeedTimes[0].ZooKeeperLastName);
             Assert.Equal(zooKeeper.LastName, bison.FeedTimes[0].ZooKeeperLastName);
+            Assert.Equal(zooKeeper3.LastName, bison2.FeedTimes[0].ZooKeeperLastName);
         }
         [Fact]
         public void ShouldBeHealAnimals()
