@@ -46,5 +46,14 @@ namespace EmployeeTests
             Penguin penguin = new Penguin();
             Assert.True(zooKeeper.FeedAnimal(penguin));
         }
+        [Fact]
+        public void ShouldNotFeedAnimal()
+        {
+            string firstName = "Ivan";
+            string lastName = "Korolev";
+            ZooKeeper zooKeeper = new ZooKeeper(firstName, lastName);
+            Penguin penguin = new Penguin();
+            Assert.False(zooKeeper.FeedAnimal(penguin));
+        }
     }
 }
