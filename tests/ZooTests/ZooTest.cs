@@ -165,8 +165,10 @@ namespace ZooTests
             zoo.FindAvailableEnclouser(bison);
             var zooKeeper = new ZooKeeper("Karl", "Gustaf", "Penguin, Bison");
             var zooKeeper2 = new ZooKeeper("Janek", "Tobrov", "Penguin");
+            var zooKeeper3 = new ZooKeeper("Janek", "Tobrov", "Bison");
             zoo.HireEmployee(zooKeeper);
             zoo.HireEmployee(zooKeeper2);
+            zoo.HireEmployee(zooKeeper3);
             var todayDate = DateTime.Now;
             penguin.AddSchedule(new() { todayDate.AddHours(-1).Hour, todayDate.AddHours(2).Hour });
             penguin2.AddSchedule(new() { todayDate.AddHours(-1).Hour, todayDate.AddHours(2).Hour });
@@ -179,6 +181,34 @@ namespace ZooTests
             Assert.Equal(zooKeeper.LastName, penguin3.FeedTimes[0].ZooKeeperLastName);
             Assert.Equal(zooKeeper2.LastName, penguin4.FeedTimes[0].ZooKeeperLastName);
             Assert.Equal(zooKeeper.LastName, bison.FeedTimes[0].ZooKeeperLastName);
+        }
+        [Fact]
+        public void ShouldBeHealAnimals()
+        {
+            var zoo = new Zoo("Berlin");
+            zoo.AddEnclouser("ice desert", 5000);
+            zoo.AddEnclouser("desert", 5000);
+            var penguin = new Penguin();
+            zoo.FindAvailableEnclouser(penguin);
+            var veterinarian = new Veterinarian("Karl", "Gustaf", "Penguin, Bison");
+            zoo.HireEmployee(veterinarian);
+            zoo.HealAnimals();
+            Assert.False(penguin.IsSick);
+        }
+        [Fact]
+        public void ShouldNotBeHealAnimals()
+        {
+            var zoo = new Zoo("Berlin");
+            zoo.AddEnclouser("ice desert", 5000);
+            zoo.AddEnclouser("desert", 5000);
+            var penguin = new Penguin();
+            zoo.FindAvailableEnclouser(penguin);
+            var bison = new Bison();
+            zoo.FindAvailableEnclouser(bison);
+            var veterinarian = new Veterinarian("Karl", "Gustaf", "Bison");
+            zoo.HireEmployee(veterinarian);
+            zoo.HealAnimals();
+            Assert.True(penguin.IsSick);
         }
     }
 }

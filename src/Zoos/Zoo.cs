@@ -67,13 +67,12 @@ namespace Zoos
         public void FeedAnimals(DateTime dateTime)
         {
             var zooKeepersList = Employees.Where(employee => employee.GetType().Name == "ZooKeeper");
+            var castZooKeepersList = zooKeepersList.Cast<ZooKeeper>().Select(e=>e);
             foreach (var animalType in AnimalsType)
             {
-                var suitableZooKeepers = new Queue<ZooKeeper>();
-                foreach (var keepers in zooKeepersList) 
-                {
-                    suitableZooKeepers.Enqueue((ZooKeeper)keepers);
-                }
+                var suitableZooKeepers = new Queue<ZooKeeper>(
+                    castZooKeepersList.Where(employee => employee.HasAnimalExperience(animalType))
+                );
                 foreach (var enclousere in Enclouseres)
                 {
                     foreach (var animal in enclousere.Animals)
@@ -91,6 +90,21 @@ namespace Zoos
                                 }
                             }
                         }
+                    }
+                }
+            }
+        }
+
+        public void HealAnimals()
+        {
+            var veterinarian = (Veterinarian)Employees.First(employee => employee.GetType().Name == "Veterinarian");
+            foreach (var enclousere in Enclouseres)
+            {
+                foreach (var animal in enclousere.Animals)
+                {
+                    if (veterinarian.HasAnimalExperience(animal.GetType().Name))
+                    {
+                        veterinarian.HealAnimal(animal);
                     }
                 }
             }
