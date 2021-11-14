@@ -36,13 +36,11 @@ namespace Employee
             var animalType = animal.GetType();
             var animalTypeName = animalType.Name;
             bool hasAnimalExperience = HasAnimalExperience(animalTypeName);
-            bool wasFed = false;
             if (hasAnimalExperience)
             {
                 Meet meet = new Meet();
                 animal.Feed(meet, LastName, FirstName);
-                wasFed = true;
-                return wasFed;
+                return true;
             }
             else
             {
