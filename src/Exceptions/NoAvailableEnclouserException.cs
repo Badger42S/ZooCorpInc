@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Employee
+namespace Exceptions
 {
-    public interface IEmployee
+    public class NoAvailableEnclouserException : Exception
     {
-        string FirstName { get; }
-        string LastName { get; }
     }
 }

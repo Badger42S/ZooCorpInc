@@ -8,9 +8,9 @@ namespace FeedTimeNotes
         public string ZooKeeperFirstName;
         public string ZooKeeperLastName;
 
-        public FeedTime(DateTime timeNow, string lastName, string firstName)
+        public FeedTime(DateTime fedTime, string lastName, string firstName)
         {
-            FeedTimeNote = timeNow;
+            FeedTimeNote = fedTime;
             ZooKeeperLastName = lastName;
             ZooKeeperFirstName = firstName;
         }

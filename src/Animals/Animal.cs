@@ -12,7 +12,7 @@ namespace Animals
         public abstract int RequiredSpaceSqFt { get; }
         public bool IsSick { get; private set; } = true;
         public List<int> FeedSchedule { get; private set; } = new() { 12 };
-        public List<FeedTime> FeedTimes { get; set; } = new();
+        public List<FeedTime> FeedTimes { get; private set; } = new();
         public int ID { get; set; }
         
 
@@ -32,9 +32,11 @@ namespace Animals
             FeedSchedule.Sort();
         }
 
-        public void Feed(Food food)
+        public void Feed(Food food, string lastName, string firstName)
         {
-            
+            var todayDate = DateTime.Now;
+            var fedTime = new FeedTime(todayDate, lastName, firstName);
+            FeedTimes.Add(fedTime);
         }
     }
 }

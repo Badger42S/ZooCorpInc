@@ -7,7 +7,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Animals\Animals.csproj" />
     <ProjectReference Include="..\Exceptions\Exceptions.csproj" />
-    <ProjectReference Include="..\Zoos\Zoos.csproj" />
   </ItemGroup>
 
 </Project>
