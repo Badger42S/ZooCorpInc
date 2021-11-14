@@ -119,5 +119,66 @@ namespace ZooTests
             var zooKeeper = new ZooKeeper("Karl", "Gustaf", "Lion");
             Assert.Throws<NoNeededExperienceException>(() => zoo.HireEmployee(zooKeeper));
         }
+        [Fact]
+        public void ShouldBeFeedAnimals()
+        {
+            var zoo = new Zoo("Berlin");
+            zoo.AddEnclouser("ice desert", 5000);
+            var penguin = new Penguin();
+            zoo.FindAvailableEnclouser(penguin);
+            var zooKeeper = new ZooKeeper("Karl", "Gustaf", "Penguin");
+            zoo.HireEmployee(zooKeeper);
+            var todayDate = DateTime.Now;
+            penguin.AddSchedule(new() { todayDate.AddHours(-1).Hour, todayDate.AddHours(1).Hour });
+            zoo.FeedAnimals(todayDate);
+            Assert.Equal(penguin.FeedTimes[0].FeedTimeNote.Hour, todayDate.Hour);
+        }
+        [Fact]
+        public void ShouldNotBeFeedAnimals()
+        {
+            var zoo = new Zoo("Berlin");
+            zoo.AddEnclouser("ice desert", 5000);
+            var penguin = new Penguin();
+            zoo.FindAvailableEnclouser(penguin);
+            var zooKeeper = new ZooKeeper("Karl", "Gustaf", "Penguin");
+            zoo.HireEmployee(zooKeeper);
+            var todayDate = DateTime.Now;
+            penguin.AddSchedule(new() { todayDate.AddHours(1).Hour, todayDate.AddHours(2).Hour });
+            zoo.FeedAnimals(todayDate);
+            Assert.Empty(penguin.FeedTimes);
+        }
+        [Fact]
+        public void ShouldBeFeedAnimalsByDifferentZooKeepers()
+        {
+            var zoo = new Zoo("Berlin");
+            zoo.AddEnclouser("ice desert", 5000);
+            zoo.AddEnclouser("desert", 5000);
+            var penguin = new Penguin();
+            var penguin2 = new Penguin();
+            var penguin3 = new Penguin();
+            var penguin4 = new Penguin();
+            var bison = new Bison();
+            zoo.FindAvailableEnclouser(penguin);
+            zoo.FindAvailableEnclouser(penguin2);
+            zoo.FindAvailableEnclouser(penguin3);
+            zoo.FindAvailableEnclouser(penguin4);
+            zoo.FindAvailableEnclouser(bison);
+            var zooKeeper = new ZooKeeper("Karl", "Gustaf", "Penguin, Bison");
+            var zooKeeper2 = new ZooKeeper("Janek", "Tobrov", "Penguin");
+            zoo.HireEmployee(zooKeeper);
+            zoo.HireEmployee(zooKeeper2);
+            var todayDate = DateTime.Now;
+            penguin.AddSchedule(new() { todayDate.AddHours(-1).Hour, todayDate.AddHours(2).Hour });
+            penguin2.AddSchedule(new() { todayDate.AddHours(-1).Hour, todayDate.AddHours(2).Hour });
+            penguin3.AddSchedule(new() { todayDate.AddHours(-1).Hour, todayDate.AddHours(2).Hour });
+            penguin4.AddSchedule(new() { todayDate.AddHours(-1).Hour, todayDate.AddHours(2).Hour });
+            bison.AddSchedule(new() { todayDate.AddHours(-1).Hour, todayDate.AddHours(2).Hour });
+            zoo.FeedAnimals(todayDate);
+            Assert.Equal(zooKeeper.LastName, penguin.FeedTimes[0].ZooKeeperLastName);
+            Assert.Equal(zooKeeper2.LastName, penguin2.FeedTimes[0].ZooKeeperLastName);
+            Assert.Equal(zooKeeper.LastName, penguin3.FeedTimes[0].ZooKeeperLastName);
+            Assert.Equal(zooKeeper2.LastName, penguin4.FeedTimes[0].ZooKeeperLastName);
+            Assert.Equal(zooKeeper.LastName, bison.FeedTimes[0].ZooKeeperLastName);
+        }
     }
 }

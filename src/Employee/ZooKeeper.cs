@@ -33,43 +33,15 @@ namespace Employee
 
         public bool FeedAnimal(Animal animal)
         {
-            var type = animal.GetType();
-            var typeName = type.Name;
-            bool hasAnimalExperience = HasAnimalExperience(typeName);
+            var animalType = animal.GetType();
+            var animalTypeName = animalType.Name;
+            bool hasAnimalExperience = HasAnimalExperience(animalTypeName);
+            bool wasFed = false;
             if (hasAnimalExperience)
             {
-                var timeNow = new DateTime(2021, 7, 20, 18, 30, 25);
-                int fedTodayCount = 0;
-                if(animal.FeedTimes.Count > 2)
-                {
-                    for (int ind = animal.FeedTimes.Count - 1; ind >= 0; ind--)
-                    {
-                        if (animal.FeedTimes[ind].FeedTimeNote.Date == timeNow.Date)
-                        {
-                            fedTodayCount += 1;
-                        }
-                        if (fedTodayCount > 2 || animal.FeedTimes[ind].FeedTimeNote.Date != timeNow.Date)
-                        {
-                            break;
-                        }
-                    }
-                }
-                bool shouldBeFeed = fedTodayCount < 2 ? true : false;
-
-                bool timeToEat = false;
-                foreach (var scheduleNote in animal.FeedSchedule)
-                {
-                    timeToEat = timeNow.Hour > scheduleNote;
-                }
-
-                bool wasFed = false;
-                if(shouldBeFeed && timeToEat)
-                {
-                    Meet meet = new Meet();
-                    animal.FeedTimes.Add(new FeedTime(timeNow, LastName, FirstName));
-                    wasFed = true;
-                }
-                
+                Meet meet = new Meet();
+                animal.Feed(meet, LastName, FirstName);
+                wasFed = true;
                 return wasFed;
             }
             else

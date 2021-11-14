@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using Employee;
 using Validators;
+using System.Linq;
 
 namespace Zoos
 {
@@ -61,6 +62,38 @@ namespace Zoos
                 throw new NoNeededExperienceException();
             }
             Employees.Add(employee);
+        }
+        
+        public void FeedAnimals(DateTime dateTime)
+        {
+            var zooKeepersList = Employees.Where(employee => employee.GetType().Name == "ZooKeeper");
+            foreach (var animalType in AnimalsType)
+            {
+                var suitableZooKeepers = new Queue<ZooKeeper>();
+                foreach (var keepers in zooKeepersList) 
+                {
+                    suitableZooKeepers.Enqueue((ZooKeeper)keepers);
+                }
+                foreach (var enclousere in Enclouseres)
+                {
+                    foreach (var animal in enclousere.Animals)
+                    {
+                        if(animal.GetType().Name == animalType)
+                        {
+                            foreach (var scheduleNote in animal.FeedSchedule)
+                            {
+                                if (dateTime.Hour > scheduleNote)
+                                {
+                                    var feedingZooKeeper = suitableZooKeepers.Dequeue();
+                                    feedingZooKeeper.FeedAnimal(animal);
+                                    suitableZooKeepers.Enqueue(feedingZooKeeper);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
