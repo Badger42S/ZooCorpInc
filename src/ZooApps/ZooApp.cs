@@ -10,6 +10,7 @@ namespace ZooApps
         public void AddZoo(Zoo zoo)
         {
             ZooList.Add(zoo);
+            Console.WriteLine($"{zoo.Location} zoo was added to application");
         }
     }
 }

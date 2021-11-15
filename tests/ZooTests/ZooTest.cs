@@ -122,7 +122,7 @@ namespace ZooTests
             Assert.Equal(veterinarian, hiredKeeper);
         }
         [Fact]
-        public void ShouldBePrintHireZooVeterinarian()
+        public void ShouldBePrintHireVeterinarian()
         {
             var zoo = new Zoo("Berlin");
             zoo.AddEnclouser("desert", 1000);
