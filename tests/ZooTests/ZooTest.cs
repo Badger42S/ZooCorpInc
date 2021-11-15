@@ -184,7 +184,7 @@ namespace ZooTests
             zoo.FindAvailableEnclouser(penguin);
             var zooKeeper = new ZooKeeper("Karl", "Gustaf", "Penguin");
             zoo.HireEmployee(zooKeeper);
-            var todayDate = DateTime.Now;
+            var todayDate = new DateTime(2021, 7, 9, 12, 0, 0);
             penguin.AddSchedule(new() { todayDate.AddHours(1).Hour, todayDate.AddHours(2).Hour });
             zoo.FeedAnimals(todayDate);
             Assert.Empty(penguin.FeedTimes);

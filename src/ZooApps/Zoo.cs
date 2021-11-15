@@ -83,12 +83,11 @@ namespace ZooApps.Zoos
                 }
             }
 
-            var zooKeepersList = Employees.Where(employee => employee.GetType().Name == "ZooKeeper");
-            var castZooKeepersList = zooKeepersList.Cast<ZooKeeper>().Select(e => e);
+            var zooKeepersList = Employees.Where(employee => employee.GetType().Name == "ZooKeeper").Cast<ZooKeeper>();
             foreach (var animalType in AnimalsType)
             {
                 var suitableZooKeepers = new Queue<ZooKeeper>(
-                    castZooKeepersList.Where(employee => employee.HasAnimalExperience(animalType)));
+                    zooKeepersList.Where(employee => employee.HasAnimalExperience(animalType)));
                 foreach(var animal in animalDictionary[animalType])
                 {
                     foreach (var scheduleNote in animal.FeedSchedule)
