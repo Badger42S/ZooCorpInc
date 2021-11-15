@@ -8,6 +8,5 @@ namespace Animals.Mammal
 {
     public abstract class Mammal : Animal
     {
-        public Mammal(int id) : base(id) { }
     }
 }

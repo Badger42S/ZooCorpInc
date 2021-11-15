@@ -10,8 +10,6 @@ namespace Animals.Reptile
     {
         public override string[] FavoriteFood { get; } = new string[] { "mouse", "bird" };
         public override int RequiredSpaceSqFt { get; } = 2;
-        public Snake(int id) : base(id) { }
-
         public override bool IsFriendlyWithAnimal(Animal animal)
         {
             string FriendlyAnimalList = "Snake";

@@ -20,9 +20,11 @@ namespace Animals
         {
             IsSick = false;
         }
-        public Animal(int id)
+        public Animal()
         {
-            ID = id;
+            var random = new Random();
+            int randomId = random.Next(0, int.MaxValue);
+            ID = randomId;
         }
         public abstract bool IsFriendlyWithAnimal(Animal animal);
 

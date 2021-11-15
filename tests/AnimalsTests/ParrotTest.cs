@@ -12,42 +12,6 @@ namespace AnimalsTests
     public class ParrotTest
     {
         [Fact]
-        public void ShouldBeHealed()
-        {
-            Parrot parrot = new Parrot();
-            Antibiotics antibiotics = new();
-            parrot.Heal(antibiotics);
-            Assert.False(parrot.IsSick);
-            parrot = new Parrot();
-            AntiDepression antiDepression = new();
-            parrot.Heal(antiDepression);
-            Assert.False(parrot.IsSick);
-            parrot = new Parrot();
-            AntiInflammatory antiInflammatory = new();
-            parrot.Heal(antiInflammatory);
-            Assert.False(parrot.IsSick);
-        }
-        [Theory]
-        [InlineData(0, 23)]
-        [InlineData(5, 20)]
-        public void ShouldAddSchedule(int value1, int value2)
-        {
-            Parrot parrot = new Parrot();
-            List<int> moreFeedTimes = new() { value1, value2 };
-            parrot.AddSchedule(moreFeedTimes);
-            Assert.Equal(value1, parrot.FeedSchedule[0]);
-            Assert.Equal(value2, parrot.FeedSchedule[parrot.FeedSchedule.Count - 1]);
-        }
-        [Theory]
-        [InlineData(547)]
-        [InlineData(6698705)]
-        public void ShouldBeCorrectID(int value)
-        {
-            Parrot parrot = new Parrot();
-            parrot.ID = value;
-            Assert.Equal(value, parrot.ID);
-        }
-        [Fact]
         public void ShouldBeFriendly()
         {
             var parrot = new Parrot();

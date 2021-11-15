@@ -12,42 +12,6 @@ namespace AnimalsTests
     public class TurtleTest
     {
         [Fact]
-        public void ShouldBeHealed()
-        {
-            var turtle = new Turtle();
-            Antibiotics antibiotics = new();
-            turtle.Heal(antibiotics);
-            Assert.False(turtle.IsSick);
-            turtle = new Turtle();
-            AntiDepression antiDepression = new();
-            turtle.Heal(antiDepression);
-            Assert.False(turtle.IsSick);
-            turtle = new Turtle();
-            AntiInflammatory antiInflammatory = new();
-            turtle.Heal(antiInflammatory);
-            Assert.False(turtle.IsSick);
-        }
-        [Theory]
-        [InlineData(0, 23)]
-        [InlineData(5, 20)]
-        public void ShouldAddSchedule(int value1, int value2)
-        {
-            Turtle turtle = new Turtle();
-            List<int> moreFeedTimes = new() { value1, value2 };
-            turtle.AddSchedule(moreFeedTimes);
-            Assert.Equal(value1, turtle.FeedSchedule[0]);
-            Assert.Equal(value2, turtle.FeedSchedule[turtle.FeedSchedule.Count - 1]);
-        }
-        [Theory]
-        [InlineData(547)]
-        [InlineData(6698705)]
-        public void ShouldBeCorrectID(int value)
-        {
-            Turtle turtle = new Turtle();
-            turtle.ID = value;
-            Assert.Equal(value, turtle.ID);
-        }
-        [Fact]
         public void ShouldBeFriendly()
         {
             var turtle = new Turtle();
