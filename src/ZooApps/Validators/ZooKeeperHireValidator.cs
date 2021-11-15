@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace ZooApps.Validators
 {
-    class ZooKeeperHireValidator : HireValidator, IHireValidator
+    class ZooKeeperHireValidator : HireValidator
     {
         public HashSet<string> AnimalsType { get; }
         public ZooKeeperHireValidator(HashSet<string> animalsType)

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ZooApps.Validators
 {
-    public abstract class HireValidator
+    public abstract class HireValidator:IHireValidator
     {
         public abstract List<string> ValidateEmployee(IEmployee employee);
     }

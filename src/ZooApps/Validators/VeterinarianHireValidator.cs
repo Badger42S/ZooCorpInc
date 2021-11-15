@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ZooApps.Validators
 {
-    class VeterinarianHireValidator : HireValidator, IHireValidator
+    class VeterinarianHireValidator : HireValidator
     {
         public HashSet<string> AnimalsType { get; }
         public VeterinarianHireValidator(HashSet<string> animalsType)
