@@ -1,4 +1,7 @@
 using Animals;
+using Animals.Bird;
+using Animals.Mammal;
+using Animals.Reptile;
 using Enclousers;
 using Exceptions;
 using System;

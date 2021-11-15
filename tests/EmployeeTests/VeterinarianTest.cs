@@ -1,4 +1,6 @@
 using Animals;
+using Animals.Bird;
+using Animals.Reptile;
 using Employee;
 using System;
 using Xunit;
@@ -43,9 +45,9 @@ namespace EmployeeTests
             string lastName = "Starov"; 
             string animalExperience = typeof(Penguin).Name;
             Veterinarian veterinarian = new Veterinarian(firstName, lastName, animalExperience);
-            Penguin penguin = new Penguin();
+            var penguin = new Penguin();
             Assert.False(veterinarian.HealAnimal(penguin));
-            Snake snake = new Snake();
+            var snake = new Snake();
             Assert.True(veterinarian.HealAnimal(snake));
         }
 

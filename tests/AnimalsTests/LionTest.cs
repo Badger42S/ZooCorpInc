@@ -1,4 +1,7 @@
 ﻿using Animals;
+using Animals.Bird;
+using Animals.Mammal;
+using Animals.Reptile;
 using Medicines;
 using System;
 using System.Collections.Generic;

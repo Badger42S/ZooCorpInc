@@ -1,4 +1,7 @@
 ﻿using Animals;
+using Animals.Bird;
+using Animals.Mammal;
+using Animals.Reptile;
 using Medicines;
 using System;
 using System.Collections.Generic;
@@ -73,7 +76,7 @@ namespace AnimalsTests
         [InlineData("vegetables")]
         public void ShouldGetFavoriteFood(string food)
         {
-            Parrot parrot = new Parrot();
+            var parrot = new Parrot();
             string favoriteFoodString = string.Join(",", parrot.FavoriteFood);
             Assert.Contains(food, favoriteFoodString);
         }

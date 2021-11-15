@@ -1,4 +1,7 @@
 ﻿using Animals;
+using Animals.Bird;
+using Animals.Mammal;
+using Animals.Reptile;
 using Medicines;
 using System;
 using System.Collections.Generic;
@@ -11,15 +14,15 @@ namespace AnimalsTests
         [Fact]
         public void ShouldBeHealed()
         {
-            var bison = new Bison();
+            var bison = new Bison(1);
             Antibiotics antibiotics = new();
             bison.Heal(antibiotics);
             Assert.False(bison.IsSick);
-            bison = new Bison();
+            bison = new Bison(1);
             AntiDepression antiDepression = new();
             bison.Heal(antiDepression);
             Assert.False(bison.IsSick);
-            bison = new Bison();
+            bison = new Bison(1);
             AntiInflammatory antiInflammatory = new();
             bison.Heal(antiInflammatory);
             Assert.False(bison.IsSick);
@@ -29,7 +32,7 @@ namespace AnimalsTests
         [InlineData(5, 20)]
         public void ShouldAddSchedule(int value1, int value2)
         {
-            var bison = new Bison();
+            var bison = new Bison(1);
             List<int> moreFeedTimes = new() { value1, value2 };
             bison.AddSchedule(moreFeedTimes);
             Assert.Equal(value1, bison.FeedSchedule[0]);
@@ -40,16 +43,15 @@ namespace AnimalsTests
         [InlineData(6698705)]
         public void ShouldBeCorrectID(int value)
         {
-            var bison = new Bison();
-            bison.ID = value;
+            var bison = new Bison(value);
             Assert.Equal(value, bison.ID);
         }
         [Fact]
         public void ShouldBeFriendly()
         {
-            var bison = new Bison();
-            var bison2 = new Bison();
-            var elephant = new Elephant();
+            var bison = new Bison(1);
+            var bison2 = new Bison(2);
+            var elephant = new Elephant(3);
             Assert.True(bison.IsFriendlyWithAnimal(elephant));
             Assert.True(bison.IsFriendlyWithAnimal(bison2));
         }

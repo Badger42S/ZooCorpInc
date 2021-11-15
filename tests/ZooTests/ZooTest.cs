@@ -1,4 +1,6 @@
 using Animals;
+using Animals.Bird;
+using Animals.Mammal;
 using Employee;
 using Enclousers;
 using Exceptions;
