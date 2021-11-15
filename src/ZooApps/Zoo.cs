@@ -66,29 +66,48 @@ namespace ZooApps.Zoos
         
         public void FeedAnimals(DateTime dateTime)
         {
+            var animalDictionary = new Dictionary<string, List<Animal>>();
+            foreach (var enclousere in Enclouseres)
+            {
+                foreach (var animal in enclousere.Animals)
+                {
+                    var animalType = animal.GetType().Name;
+                    if (!animalDictionary.ContainsKey(animalType))
+                    {
+                        animalDictionary.Add(animalType, new List<Animal>() { });
+                    }
+                    animalDictionary[animalType].Add(animal);
+
+                }
+            }
+
             var zooKeepersList = Employees.Where(employee => employee.GetType().Name == "ZooKeeper");
-            var castZooKeepersList = zooKeepersList.Cast<ZooKeeper>().Select(e=>e);
+            var castZooKeepersList = zooKeepersList.Cast<ZooKeeper>().Select(e => e);
             foreach (var animalType in AnimalsType)
             {
                 var suitableZooKeepers = new Queue<ZooKeeper>(
-                    castZooKeepersList.Where(employee => employee.HasAnimalExperience(animalType))
-                );
-                foreach (var enclousere in Enclouseres)
+                    castZooKeepersList.Where(employee => employee.HasAnimalExperience(animalType)));
+                foreach(var animal in animalDictionary[animalType])
                 {
-                    foreach (var animal in enclousere.Animals)
+                    foreach (var scheduleNote in animal.FeedSchedule)
                     {
-                        if(animal.GetType().Name == animalType)
+                        int fedCount = 0;
+                        for(int i= animal.FeedTimes.Count - 1; i >= 0; i--)
                         {
-                            foreach (var scheduleNote in animal.FeedSchedule)
+                            if(animal.FeedTimes[i].FeedTimeNote.Day != dateTime.Day)
                             {
-                                if (dateTime.Hour > scheduleNote)
-                                {
-                                    var feedingZooKeeper = suitableZooKeepers.Dequeue();
-                                    feedingZooKeeper.FeedAnimal(animal, dateTime);
-                                    suitableZooKeepers.Enqueue(feedingZooKeeper);
-                                    break;
-                                }
+                                break;
                             }
+                            fedCount += 1;
+                        }
+                        bool isWasFedTwice = fedCount > 1;
+                        bool isTimeToEat = dateTime.Hour > scheduleNote;
+                        if (isTimeToEat && !isWasFedTwice)
+                        {
+                            var feedingZooKeeper = suitableZooKeepers.Dequeue();
+                            feedingZooKeeper.FeedAnimal(animal, dateTime);
+                            suitableZooKeepers.Enqueue(feedingZooKeeper);
+                            break;
                         }
                     }
                 }

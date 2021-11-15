@@ -150,6 +150,22 @@ namespace ZooTests
             Assert.Empty(penguin.FeedTimes);
         }
         [Fact]
+        public void ShouldBeFeedOnltTwice()
+        {
+            var zoo = new Zoo("Berlin");
+            zoo.AddEnclouser("ice desert", 5000);
+            var penguin = new Penguin();
+            zoo.FindAvailableEnclouser(penguin);
+            var zooKeeper = new ZooKeeper("Karl", "Gustaf", "Penguin");
+            zoo.HireEmployee(zooKeeper);
+            var todayDate = DateTime.Now;
+            penguin.AddSchedule(new() { todayDate.AddHours(-2).Hour, todayDate.AddHours(2).Hour });
+            zoo.FeedAnimals(todayDate);
+            zoo.FeedAnimals(todayDate);
+            zoo.FeedAnimals(todayDate);
+            Assert.Equal(2, penguin.FeedTimes.Count);
+        }
+        [Fact]
         public void ShouldBeFeedAnimalsByDifferentZooKeepers()
         {
             var zoo = new Zoo("Berlin");
