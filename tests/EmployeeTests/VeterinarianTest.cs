@@ -1,9 +1,9 @@
 using Animals;
 using Animals.Bird;
 using Animals.Reptile;
-using Employee;
 using System;
 using Xunit;
+using ZooApps.Employee;
 
 namespace EmployeeTests
 {
@@ -14,8 +14,8 @@ namespace EmployeeTests
         {
             string firstName = "Lev";
             string lastName = "Starov";
-            Veterinarian veterinarian = new Veterinarian(firstName, lastName);
-            Penguin penguin = new Penguin();
+            var veterinarian = new Veterinarian(firstName, lastName);
+            var penguin = new Penguin();
             veterinarian.AddAnimalExperience(penguin);
             Assert.Contains(typeof(Penguin).Name, veterinarian.AnimalExperience);
         }

@@ -1,10 +1,9 @@
 ﻿using Animals;
 using Animals.Bird;
-using Employee;
-using Medicines;
 using System;
 using System.Collections.Generic;
 using Xunit;
+using ZooApps.Employee;
 
 namespace AnimalsTests
 {

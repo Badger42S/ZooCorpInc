@@ -21,7 +21,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\ZooApps\ZooApps.csproj" />
-    <ProjectReference Include="..\..\src\Zoos\Zoos.csproj" />
   </ItemGroup>
 
 </Project>

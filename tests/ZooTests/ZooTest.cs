@@ -1,12 +1,12 @@
 using Animals;
 using Animals.Bird;
 using Animals.Mammal;
-using Employee;
-using Enclousers;
-using Exceptions;
+using ZooApps.Employee;
+using ZooApps.Enclousers;
+using ZooApps.Exceptions;
 using System;
 using Xunit;
-using Zoos;
+using ZooApps.Zoos;
 
 namespace ZooTests
 {

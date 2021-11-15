@@ -20,8 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Animals\Animals.csproj" />
-    <ProjectReference Include="..\..\src\Employee\Employee.csproj" />
+    <ProjectReference Include="..\..\src\ZooApps\ZooApps.csproj" />
   </ItemGroup>
 
 </Project>

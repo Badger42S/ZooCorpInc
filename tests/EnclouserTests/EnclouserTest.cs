@@ -1,12 +1,10 @@
-using Animals;
 using Animals.Bird;
 using Animals.Mammal;
 using Animals.Reptile;
-using Enclousers;
-using Exceptions;
-using System;
 using Xunit;
-using Zoos;
+using ZooApps.Enclousers;
+using ZooApps.Exceptions;
+using ZooApps.Zoos;
 
 namespace EnclouserTests
 {

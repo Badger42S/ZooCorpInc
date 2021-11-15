@@ -8,9 +8,4 @@
     <PackageReference Include="FluentValidation" Version="10.3.4" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Employee\Employee.csproj" />
-    <ProjectReference Include="..\Exceptions\Exceptions.csproj" />
-  </ItemGroup>
-
 </Project>

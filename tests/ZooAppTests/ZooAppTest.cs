@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 using ZooApps;
-using Zoos;
+using ZooApps.Zoos;
 
 namespace ZooAppTests
 {

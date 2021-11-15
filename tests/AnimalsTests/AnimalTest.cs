@@ -1,9 +1,6 @@
-﻿using Animals;
-using Animals.Bird;
+﻿using Animals.Bird;
 using Animals.Mammal;
-using Animals.Reptile;
-using Medicines;
-using System;
+using ZooApps.Medicines;
 using System.Collections.Generic;
 using Xunit;
 
