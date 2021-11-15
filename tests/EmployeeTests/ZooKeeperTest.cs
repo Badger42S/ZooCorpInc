@@ -1,6 +1,7 @@
 using Xunit;
 using Animals.Bird;
 using ZooApps.Employee;
+using System;
 
 namespace EmployeeTests
 {
@@ -43,7 +44,8 @@ namespace EmployeeTests
             string animalExperience = typeof(Penguin).Name;
             ZooKeeper zooKeeper = new ZooKeeper(firstName, lastName, animalExperience);
             Penguin penguin = new Penguin();
-            Assert.True(zooKeeper.FeedAnimal(penguin));
+            var dateTime = DateTime.Now;
+            Assert.True(zooKeeper.FeedAnimal(penguin, dateTime));
         }
         [Fact]
         public void ShouldNotFeedAnimal()
@@ -52,7 +54,8 @@ namespace EmployeeTests
             string lastName = "Korolev";
             ZooKeeper zooKeeper = new ZooKeeper(firstName, lastName);
             Penguin penguin = new Penguin();
-            Assert.False(zooKeeper.FeedAnimal(penguin));
+            var dateTime = DateTime.Now;
+            Assert.False(zooKeeper.FeedAnimal(penguin, dateTime));
         }
     }
 }

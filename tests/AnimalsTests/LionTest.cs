@@ -5,6 +5,8 @@ using Animals.Reptile;
 using System;
 using System.Collections.Generic;
 using Xunit;
+using ZooApps.Employee;
+using ZooApps.Foods;
 
 namespace AnimalsTests
 {
@@ -35,7 +37,7 @@ namespace AnimalsTests
             Assert.False(lion.IsFriendlyWithAnimal(penguin));
        }
        [Theory]
-       [InlineData("meet")]
+       [InlineData("Meet")]
        public void ShouldGetFavoriteFood(string food)
        {
            var lion = new Lion();
@@ -43,14 +45,34 @@ namespace AnimalsTests
            Assert.Contains(food, favoriteFoodString);
        }
        [Theory]
-       [InlineData("grass")]
-       [InlineData("egg")]
+       [InlineData("Grass")]
+       [InlineData("Egg")]
        public void ShouldNotGetBadFood(string badFood)
        {
            var lion = new Lion();
            string favoriteFoodString = string.Join(",", lion.FavoriteFood);
            Assert.DoesNotContain(badFood, favoriteFoodString);
        }
+        [Fact]
+        public void ShouldNotBeSick()
+        {
+            var lion = new Lion();
+            var meet = new Meet();
+            var zooKeeper = new ZooKeeper("d", "d");
+            var dateTime = DateTime.Now;
+            lion.Feed(meet, dateTime, zooKeeper);
+            Assert.False(lion.IsSick);
+        }
+        [Fact]
+        public void ShouldBeSick()
+        {
+            var lion = new Lion();
+            var grass = new Grass();
+            var zooKeeper = new ZooKeeper("d", "d");
+            var dateTime = DateTime.Now;
+            lion.Feed(grass, dateTime, zooKeeper);
+            Assert.True(lion.IsSick);
+        }
         [Theory]
         [InlineData(1000)]
         public void ShouldBeRequireSsquareFeet(int requiresFt)

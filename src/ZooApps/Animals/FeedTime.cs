@@ -1,18 +1,17 @@
 ﻿using System;
+using ZooApps.Employee;
 
 namespace FeedTimeNotes
 {
     public class FeedTime
     {
         public DateTime FeedTimeNote;
-        public string ZooKeeperFirstName;
-        public string ZooKeeperLastName;
+        public ZooKeeper FeedByZooKeeper;
 
-        public FeedTime(DateTime fedTime, string lastName, string firstName)
+        public FeedTime(DateTime fedTime, ZooKeeper zooKeeper)
         {
             FeedTimeNote = fedTime;
-            ZooKeeperLastName = lastName;
-            ZooKeeperFirstName = firstName;
+            FeedByZooKeeper = zooKeeper;
         }
     }
 }

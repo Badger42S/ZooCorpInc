@@ -84,7 +84,7 @@ namespace ZooApps.Zoos
                                 if (dateTime.Hour > scheduleNote)
                                 {
                                     var feedingZooKeeper = suitableZooKeepers.Dequeue();
-                                    feedingZooKeeper.FeedAnimal(animal);
+                                    feedingZooKeeper.FeedAnimal(animal, dateTime);
                                     suitableZooKeepers.Enqueue(feedingZooKeeper);
                                     break;
                                 }

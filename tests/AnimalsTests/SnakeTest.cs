@@ -6,6 +6,8 @@ using Animals.Reptile;
 using System;
 using System.Collections.Generic;
 using Xunit;
+using ZooApps.Employee;
+using ZooApps.Foods;
 
 namespace AnimalsTests
 {
@@ -36,8 +38,7 @@ namespace AnimalsTests
             Assert.False(snake.IsFriendlyWithAnimal(penguin));
        }
        [Theory]
-       [InlineData("mouse")]
-       [InlineData("bird")]
+       [InlineData("Meet")]
         public void ShouldGetFavoriteFood(string food)
        {
            var snake = new Snake();
@@ -45,14 +46,34 @@ namespace AnimalsTests
            Assert.Contains(food, favoriteFoodString);
        }
        [Theory]
-       [InlineData("grass")]
-       [InlineData("egg")]
+       [InlineData("Grass")]
+       [InlineData("Egg")]
        public void ShouldNotGetBadFood(string badFood)
        {
             var snake = new Snake();
             string favoriteFoodString = string.Join(",", snake.FavoriteFood);
            Assert.DoesNotContain(badFood, favoriteFoodString);
        }
+        [Fact]
+        public void ShouldNotBeSick()
+        {
+            var snake = new Snake();
+            var meet = new Meet();
+            var zooKeeper = new ZooKeeper("d", "d");
+            var dateTime = DateTime.Now;
+            snake.Feed(meet, dateTime,zooKeeper);
+            Assert.False(snake.IsSick);
+        }
+        [Fact]
+        public void ShouldBeSick()
+        {
+            var snake = new Snake();
+            var grass = new Grass();
+            var zooKeeper = new ZooKeeper("d", "d");
+            var dateTime = DateTime.Now;
+            snake.Feed(grass, dateTime,zooKeeper);
+            Assert.True(snake.IsSick);
+        }
         [Theory]
         [InlineData(2)]
         public void ShouldBeRequireSsquareFeet(int requiresFt)

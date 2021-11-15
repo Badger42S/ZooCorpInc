@@ -1,4 +1,5 @@
 ﻿using Animals;
+using System;
 using ZooApps.Foods;
 
 namespace ZooApps.Employee
@@ -26,15 +27,18 @@ namespace ZooApps.Employee
             return AnimalExperience.Contains(name);
         }
 
-        public bool FeedAnimal(Animal animal)
+        public bool FeedAnimal(Animal animal, DateTime dateTime)
         {
+            //randome food
+            var random = new Random().Next(0, 2);
+            var foodArray = new Food[] { new Meet(), new Grass(), new Vegetable() };
+            var food = foodArray[random];
             var animalType = animal.GetType();
             var animalTypeName = animalType.Name;
             bool hasAnimalExperience = HasAnimalExperience(animalTypeName);
             if (hasAnimalExperience)
             {
-                Meet meet = new Meet();
-                animal.Feed(meet, LastName, FirstName);
+                animal.Feed(food, dateTime, this);
                 return true;
             }
             else

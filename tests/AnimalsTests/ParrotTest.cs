@@ -6,6 +6,8 @@ using Animals.Reptile;
 using System;
 using System.Collections.Generic;
 using Xunit;
+using ZooApps.Employee;
+using ZooApps.Foods;
 
 namespace AnimalsTests
 {
@@ -36,8 +38,7 @@ namespace AnimalsTests
             Assert.False(parrot.IsFriendlyWithAnimal(penguin));
         }
         [Theory]
-        [InlineData("fruit")]
-        [InlineData("vegetables")]
+        [InlineData("Vegetable")]
         public void ShouldGetFavoriteFood(string food)
         {
             var parrot = new Parrot();
@@ -45,13 +46,33 @@ namespace AnimalsTests
             Assert.Contains(food, favoriteFoodString);
         }
         [Theory]
-        [InlineData("grass")]
-        [InlineData("egg")]
+        [InlineData("Grass")]
+        [InlineData("Egg")]
         public void ShouldNotGetBadFood(string badFood)
         {
             var parrot = new Parrot();
             string favoriteFoodString = string.Join(",", parrot.FavoriteFood);
             Assert.DoesNotContain(badFood, favoriteFoodString);
+        }
+        [Fact]
+        public void ShouldNotBeSick()
+        {
+            var parrot = new Parrot();
+            var vegetable = new Vegetable();
+            var zooKeeper = new ZooKeeper("d", "d");
+            var dateTime = DateTime.Now;
+            parrot.Feed(vegetable, dateTime, zooKeeper);
+            Assert.False(parrot.IsSick);
+        }
+        [Fact]
+        public void ShouldBeSick()
+        {
+            var parrot = new Parrot();
+            var meet = new Meet();
+            var zooKeeper = new ZooKeeper("d", "d");
+            var dateTime = DateTime.Now;
+            parrot.Feed(meet, dateTime, zooKeeper);
+            Assert.True(parrot.IsSick);
         }
         [Theory]
         [InlineData(5)]

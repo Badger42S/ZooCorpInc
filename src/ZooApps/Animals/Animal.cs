@@ -3,6 +3,7 @@ using ZooApps.Foods;
 using ZooApps.Medicines;
 using System;
 using System.Collections.Generic;
+using ZooApps.Employee;
 
 namespace Animals
 {
@@ -34,10 +35,20 @@ namespace Animals
             FeedSchedule.Sort();
         }
 
-        public void Feed(Food food, string lastName, string firstName)
+        public void Feed(Food food, DateTime dateTime, ZooKeeper zooKeeper)
         {
-            var todayDate = DateTime.Now;
-            var fedTime = new FeedTime(todayDate, lastName, firstName);
+            var foodName = food.GetType().Name;
+            bool isFedBadFood = true;
+            foreach(var favoriteFood in FavoriteFood)
+            {
+                if(favoriteFood == foodName)
+                {
+                    isFedBadFood = false;
+                    break;
+                }
+            };
+            var fedTime = new FeedTime(dateTime, zooKeeper);
+            IsSick = isFedBadFood;
             FeedTimes.Add(fedTime);
         }
     }

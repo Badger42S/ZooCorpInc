@@ -8,7 +8,7 @@ namespace Animals.Reptile
 {
     public class Turtle:Reptile
     {
-        public override string[] FavoriteFood { get; } = new string[] { "grass", "vegetable" };
+        public override string[] FavoriteFood { get; } = new string[] { "Grass", "Vegetable" };
         public override int RequiredSpaceSqFt { get; } = 5;
         public override bool IsFriendlyWithAnimal(Animal animal)
         {

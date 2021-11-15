@@ -181,12 +181,12 @@ namespace ZooTests
             bison.AddSchedule(new() { todayDate.AddHours(-1).Hour, todayDate.AddHours(2).Hour });
             bison2.AddSchedule(new() { todayDate.AddHours(-1).Hour, todayDate.AddHours(2).Hour });
             zoo.FeedAnimals(todayDate);
-            Assert.Equal(zooKeeper.LastName, penguin.FeedTimes[0].ZooKeeperLastName);
-            Assert.Equal(zooKeeper2.LastName, penguin2.FeedTimes[0].ZooKeeperLastName);
-            Assert.Equal(zooKeeper.LastName, penguin3.FeedTimes[0].ZooKeeperLastName);
-            Assert.Equal(zooKeeper2.LastName, penguin4.FeedTimes[0].ZooKeeperLastName);
-            Assert.Equal(zooKeeper.LastName, bison.FeedTimes[0].ZooKeeperLastName);
-            Assert.Equal(zooKeeper3.LastName, bison2.FeedTimes[0].ZooKeeperLastName);
+            Assert.Equal(zooKeeper, penguin.FeedTimes[0].FeedByZooKeeper);
+            Assert.Equal(zooKeeper2, penguin2.FeedTimes[0].FeedByZooKeeper);
+            Assert.Equal(zooKeeper, penguin3.FeedTimes[0].FeedByZooKeeper);
+            Assert.Equal(zooKeeper2, penguin4.FeedTimes[0].FeedByZooKeeper);
+            Assert.Equal(zooKeeper, bison.FeedTimes[0].FeedByZooKeeper);
+            Assert.Equal(zooKeeper3, bison2.FeedTimes[0].FeedByZooKeeper);
         }
         [Fact]
         public void ShouldBeHealAnimals()

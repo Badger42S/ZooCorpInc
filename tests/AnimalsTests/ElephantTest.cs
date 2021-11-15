@@ -1,7 +1,10 @@
 ﻿using Animals.Bird;
 using Animals.Mammal;
 using Animals.Reptile;
+using System;
 using Xunit;
+using ZooApps.Employee;
+using ZooApps.Foods;
 
 namespace AnimalsTests
 {
@@ -32,23 +35,33 @@ namespace AnimalsTests
             Assert.False(elephant.IsFriendlyWithAnimal(penguin));
         }
         [Theory]
-        [InlineData("grass")]
-        [InlineData("vegetable")]
-        [InlineData("fruit")]
+        [InlineData("Grass")]
+        [InlineData("Vegetable")]
         public void ShouldGetFavoriteFood(string food)
         {
             var elephant = new Elephant();
             string favoriteFoodString = string.Join(",", elephant.FavoriteFood);
             Assert.Contains(food, favoriteFoodString);
         }
-        [Theory]
-        [InlineData("meat")]
-        [InlineData("egg")]
-        public void ShouldNotGetBadFood(string badFood)
+        [Fact]
+        public void ShouldNotBeSick()
         {
             var elephant = new Elephant();
-            string favoriteFoodString = string.Join(",", elephant.FavoriteFood);
-            Assert.DoesNotContain(badFood, favoriteFoodString);
+            var grass = new Grass();
+            var zooKeeper = new ZooKeeper("d", "d");
+            var dateTime = DateTime.Now;
+            elephant.Feed(grass, dateTime, zooKeeper);
+            Assert.False(elephant.IsSick);
+        }
+        [Fact]
+        public void ShouldBeSick()
+        {
+            var elephant = new Elephant();
+            var meet = new Meet();
+            var zooKeeper = new ZooKeeper("d", "d");
+            var dateTime = DateTime.Now;
+            elephant.Feed(meet, dateTime, zooKeeper);
+            Assert.True(elephant.IsSick);
         }
         [Theory]
         [InlineData(1000)]

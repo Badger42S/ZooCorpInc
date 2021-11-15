@@ -2,7 +2,7 @@
 {
     public class Penguin : Bird
     {
-        public override string[] FavoriteFood { get; } = new string[] {"salmon", "herring" };
+        public override string[] FavoriteFood { get; } = new string[] {"Meet" };
         public override int RequiredSpaceSqFt { get; } = 10;
         public override bool IsFriendlyWithAnimal(Animal animal)
         {
