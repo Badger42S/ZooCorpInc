@@ -27,6 +27,7 @@ namespace ZooApps.Zoos
         {
             var enclouser = new Enclouser(name, Location, squareFeet);
             Enclouseres.Add(enclouser);
+            Console.WriteLine($"Enclose {name} was added to zoo in {this.Location}");
         }
 
         public Enclouser FindAvailableEnclouser(Animal animal)
@@ -62,6 +63,7 @@ namespace ZooApps.Zoos
                 throw new NoNeededExperienceException();
             }
             Employees.Add(employee);
+            Console.WriteLine($"{employee.LastName} {employee.FirstName} was hired as a {employee.GetType().Name}");
         }
         
         public void FeedAnimals(DateTime dateTime)

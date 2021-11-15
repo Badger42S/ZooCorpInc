@@ -20,6 +20,7 @@ namespace Animals
         public void Heal(Medicine medicine)
         {
             IsSick = false;
+            Console.WriteLine($"{this.GetType().Name} {this.ID} was healed by {medicine.GetType().Name}");
         }
         public Animal()
         {
@@ -33,6 +34,7 @@ namespace Animals
         {
             FeedSchedule = moreFeedTimes;
             FeedSchedule.Sort();
+            Console.WriteLine($"New schedule was added to {this.GetType().Name} {this.ID}");
         }
 
         public void Feed(Food food, DateTime dateTime, ZooKeeper zooKeeper)
@@ -50,6 +52,7 @@ namespace Animals
             var fedTime = new FeedTime(dateTime, zooKeeper);
             IsSick = isFedBadFood;
             FeedTimes.Add(fedTime);
+            Console.WriteLine($"{this.GetType().Name} {this.ID} was fed by {zooKeeper.LastName} {zooKeeper.FirstName}");
         }
     }
 }

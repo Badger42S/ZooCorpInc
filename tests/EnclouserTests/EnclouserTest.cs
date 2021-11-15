@@ -1,6 +1,9 @@
 using Animals.Bird;
 using Animals.Mammal;
 using Animals.Reptile;
+using System;
+using System.IO;
+using System.Text.RegularExpressions;
 using Xunit;
 using ZooApps.Enclousers;
 using ZooApps.Exceptions;
@@ -20,7 +23,7 @@ namespace EnclouserTests
             Assert.Equal(1000, enclouser.SqureFeet);
         }
         [Fact]
-        public void ShouldAddAnimalsOnFreeSpace()
+        public void ShouldAddAnimalsInFreeSpace()
         {
             var zoo = new Zoo("Toronto");
             var enclouser = new Enclouser("savannah", zoo.Location, 2000);
@@ -85,5 +88,18 @@ namespace EnclouserTests
             enclouser.AddAnimals(elephant);
             Assert.Equal(5, enclouser.Animals.Count);
         }
+        [Fact]
+        public void ShouldBePrintAddMessage()
+        {
+            var zoo = new Zoo("Toronto");
+            var enclouser = new Enclouser("savannah", zoo.Location, 2000);
+            var lion = new Lion();
+            var outputPoint = new StringWriter();
+            Console.SetOut(outputPoint);
+            string outputMessage = $"{lion.GetType().Name} {lion.ID} was added  to Enclose {enclouser.Name}";
+            enclouser.AddAnimals(lion);
+            Assert.Equal(outputMessage, Regex.Replace(outputPoint.ToString(), @"[\r\t\n]+", string.Empty));
+        }
+       
     }
 }

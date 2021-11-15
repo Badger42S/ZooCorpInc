@@ -34,6 +34,7 @@ namespace ZooApps.Enclousers
             
             Animals.Add(animal);
             SqureFeet -= animal.RequiredSpaceSqFt;
+            Console.WriteLine($"{animal.GetType().Name} {animal.ID} was added  to Enclose {this.Name}");
         }
     }
 }

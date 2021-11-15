@@ -7,6 +7,8 @@ using ZooApps.Exceptions;
 using System;
 using Xunit;
 using ZooApps.Zoos;
+using System.Text.RegularExpressions;
+using System.IO;
 
 namespace ZooTests
 {
@@ -29,6 +31,16 @@ namespace ZooTests
             Assert.Equal(1000, zoo.Enclouseres[0].SqureFeet);
             Assert.Equal("forest", zoo.Enclouseres[1].Name);
             Assert.Equal(5000, zoo.Enclouseres[1].SqureFeet);
+        }
+        [Fact]
+        public void ShouldBePrintAddEnclouserMessage()
+        {
+            var zoo = new Zoo("Berlin");
+            var outputPoint = new StringWriter();
+            Console.SetOut(outputPoint);
+            string outputMessage = $"Enclose desert was added to zoo in {zoo.Location}";
+            zoo.AddEnclouser("desert", 1000);
+            Assert.Equal(outputMessage, Regex.Replace(outputPoint.ToString(), @"[\r\t\n]+", string.Empty));
         }
         [Fact]
         public void ShouldBeFindAvailableEnclouser()
@@ -78,6 +90,20 @@ namespace ZooTests
             Assert.Equal(zooKeeper, hiredKeeper);
         }
         [Fact]
+        public void ShouldBePrintHireZooKeeperMessage()
+        {
+            var zoo = new Zoo("Berlin");
+            zoo.AddEnclouser("desert", 1000);
+            var penguin = new Penguin();
+            zoo.FindAvailableEnclouser(penguin);
+            var zooKeeper = new ZooKeeper("Karl", "Gustaf", "Penguin");
+            var outputPoint = new StringWriter();
+            Console.SetOut(outputPoint);
+            string outputMessage = $"{zooKeeper.LastName} {zooKeeper.FirstName} was hired as a {zooKeeper.GetType().Name}";
+            zoo.HireEmployee(zooKeeper);
+            Assert.Equal(outputMessage, Regex.Replace(outputPoint.ToString(), @"[\r\t\n]+", string.Empty));
+        }
+        [Fact]
         public void ShouldBeHireVeterinarian()
         {
             var zoo = new Zoo("Berlin");
@@ -94,6 +120,20 @@ namespace ZooTests
                 return (emp.FirstName == veterinarian.FirstName) && (emp.LastName == veterinarian.LastName);
             });
             Assert.Equal(veterinarian, hiredKeeper);
+        }
+        [Fact]
+        public void ShouldBePrintHireZooVeterinarian()
+        {
+            var zoo = new Zoo("Berlin");
+            zoo.AddEnclouser("desert", 1000);
+            var penguin = new Penguin();
+            zoo.FindAvailableEnclouser(penguin);
+            var veterinarian = new Veterinarian("Karl", "Gustaf", "Penguin");
+            var outputPoint = new StringWriter();
+            Console.SetOut(outputPoint);
+            string outputMessage = $"{veterinarian.LastName} {veterinarian.FirstName} was hired as a {veterinarian.GetType().Name}";
+            zoo.HireEmployee(veterinarian);
+            Assert.Equal(outputMessage, Regex.Replace(outputPoint.ToString(), @"[\r\t\n]+", string.Empty));
         }
         [Fact]
         public void ShouldNotBeHireVeterinarian()
@@ -150,7 +190,7 @@ namespace ZooTests
             Assert.Empty(penguin.FeedTimes);
         }
         [Fact]
-        public void ShouldBeFeedOnltTwice()
+        public void ShouldBeFeedOnlyTwice()
         {
             var zoo = new Zoo("Berlin");
             zoo.AddEnclouser("ice desert", 5000);
