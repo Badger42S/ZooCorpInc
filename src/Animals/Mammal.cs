@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Animals
+namespace Animals.Mammal
 {
     public abstract class Mammal : Animal
     {
-     //   public Mammal(int id) : base(id) { }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using Xunit;
 using Employee;
 using Animals;
+using Animals.Bird;
 
 namespace EmployeeTests
 {
@@ -13,7 +14,7 @@ namespace EmployeeTests
             string firstName = "Ivan";
             string lastName = "Korolev";
             ZooKeeper zooKeeper = new ZooKeeper(firstName, lastName);
-            Penguin penguin = new Penguin();
+            var penguin = new Penguin();
             zooKeeper.AddAnimalExperience(penguin);
             Assert.Contains(typeof(Penguin).Name, zooKeeper.AnimalExperience);
         }

@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Animals
+namespace Animals.Bird
 {
     public class Parrot:Bird
     {
         public override string[] FavoriteFood { get; } = new string[] { "fruit", "vegetables" };
         public override int RequiredSpaceSqFt { get; } = 5;
-       // public Parrot(int id) : base(id) { }
         public override bool IsFriendlyWithAnimal(Animal animal)
         {
             string FriendlyAnimalList = "Parrot, Bison, Elephant, Turtle";

@@ -13,7 +13,7 @@ namespace Animals
         public bool IsSick { get; private set; } = true;
         public List<int> FeedSchedule { get; private set; } = new() { 12 };
         public List<FeedTime> FeedTimes { get; private set; } = new();
-        public int ID { get; set; }
+        public int ID { get; private set; }
         
 
         public void Heal(Medicine medicine)
@@ -22,7 +22,9 @@ namespace Animals
         }
         public Animal()
         {
-           
+            var random = new Random();
+            int randomId = random.Next(0, int.MaxValue);
+            ID = randomId;
         }
         public abstract bool IsFriendlyWithAnimal(Animal animal);
 

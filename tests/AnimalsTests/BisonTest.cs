@@ -1,4 +1,7 @@
 ﻿using Animals;
+using Animals.Bird;
+using Animals.Mammal;
+using Animals.Reptile;
 using Medicines;
 using System;
 using System.Collections.Generic;
@@ -8,42 +11,6 @@ namespace AnimalsTests
 {
     public class BisonTest
     {
-        [Fact]
-        public void ShouldBeHealed()
-        {
-            var bison = new Bison();
-            Antibiotics antibiotics = new();
-            bison.Heal(antibiotics);
-            Assert.False(bison.IsSick);
-            bison = new Bison();
-            AntiDepression antiDepression = new();
-            bison.Heal(antiDepression);
-            Assert.False(bison.IsSick);
-            bison = new Bison();
-            AntiInflammatory antiInflammatory = new();
-            bison.Heal(antiInflammatory);
-            Assert.False(bison.IsSick);
-        }
-        [Theory]
-        [InlineData(0, 23)]
-        [InlineData(5, 20)]
-        public void ShouldAddSchedule(int value1, int value2)
-        {
-            var bison = new Bison();
-            List<int> moreFeedTimes = new() { value1, value2 };
-            bison.AddSchedule(moreFeedTimes);
-            Assert.Equal(value1, bison.FeedSchedule[0]);
-            Assert.Equal(value2, bison.FeedSchedule[bison.FeedSchedule.Count - 1]);
-        }
-        [Theory]
-        [InlineData(547)]
-        [InlineData(6698705)]
-        public void ShouldBeCorrectID(int value)
-        {
-            var bison = new Bison();
-            bison.ID = value;
-            Assert.Equal(value, bison.ID);
-        }
         [Fact]
         public void ShouldBeFriendly()
         {
