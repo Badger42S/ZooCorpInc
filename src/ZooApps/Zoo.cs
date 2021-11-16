@@ -83,7 +83,7 @@ namespace ZooApps.Zoos
                 }
             }
 
-            var zooKeepersList = Employees.Where(employee => employee.GetType().Name == "ZooKeeper").Cast<ZooKeeper>();
+            var zooKeepersList = Employees.Where(employee => employee.GetType().Name == "ZooKeeper").Cast<ZooKeeper>().ToList();
             foreach (var animalType in AnimalsType)
             {
                 var suitableZooKeepers = new Queue<ZooKeeper>(
